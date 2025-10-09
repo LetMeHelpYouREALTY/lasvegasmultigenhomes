@@ -1,0 +1,184 @@
+ var bsBreakpoint = function() {
+    var bp = "xs";
+    if (window.matchMedia("(min-width: 576px)").matches) bp = "sm";
+    if (window.matchMedia("(min-width: 768px)").matches) bp = "md";
+    if (window.matchMedia("(min-width: 992px)").matches) bp = "lg";
+    if (window.matchMedia("(min-width: 1200px)").matches) bp = "xl";
+    return bp;
+}
+
+var bs_breakpoint = bsBreakpoint();
+
+var updateNavOffset = function() {
+     var $navbar = $("[data-scroll-header]");
+     var nav_offset = $navbar.outerHeight(true);
+     $("body").data("offset", nav_offset).attr("data-offset", nav_offset);
+}
+
+window.addEventListener("resize", function() {
+    bs_breakpoint = bsBreakpoint();
+    updateNavOffset();
+});
+
+var getUrlParam = function(p) {
+    var url = new URL(window.location.href);
+    return url.searchParams.get(p);
+}
+
+$(function() {
+
+    updateNavOffset();
+
+    var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+    });
+
+    // JS for contact modal form
+    $(".contact-modal").on('show.bs.modal',function(e) {
+        var $this_modal = $(e.currentTarget);
+        $this_modal.find(".success-msg").hide();
+        $this_modal.find(".error-msg").hide();
+        $this_modal.find(".contact-fields").removeClass("error");
+        $this_modal.find(".contact-form").trigger("reset").show();
+        $this_modal.find(".contact-fields-wrapper").show();
+        $this_modal.find(".btn-send-message").prop("disabled", false).show();
+    });
+
+    $(".contact-modal").on('shown.bs.modal',function(e) {
+        var $this_modal = $(e.currentTarget);
+        $this_modal.find(".captcha-div").load("/message/captcha?_=" + new Date().getTime()).show();
+        $this_modal.find("input[name='name']").focus();
+    });
+
+    $('.contact-form').each(function() {
+
+        $(this).validate({
+            focusInvalid: false,
+            rules: {
+                name: { required: true },
+                email: { required: true, email: true },
+                phone: { required: true },
+                message: { required: false },
+                captcha: { required: true }
+            },
+            submitHandler: function (form) {
+                
+                var $form = $(form);
+                var fdata = $form.serialize();
+                var $success = $form.parent().find(".success-msg");
+                var $error = $form.find(".error-msg");
+                var $captcha = $form.find(".captcha-div");
+                var $btn = $form.find(".btn-send-message");
+                var defText = $btn.text();
+                var spin = '<img src="/static/img/spinner-big.gif" class="mr-2" style="width:20px;height:20px;"></img>';
+                $btn.prop("disabled", true).html(spin + defText);
+
+                var gatrackingid = $form.find(".gatrackingid").val();
+                var propertypath = $form.find(".propertypath").val();
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/message/site/contact",
+                    data: fdata,
+                    success: function(data) {
+                        if (data.ERROR) {
+                            $error.fadeIn(250).text(data.ERRORMESSAGE);
+                            $captcha.load("/message/captcha?_=" + new Date().getTime(),function() {
+                                if (!data.CAPTCHAVALID) {
+                                    $captcha.find(".captcha-input").addClass("error");
+                                }
+                            });
+                        } else {
+                            $error.hide();
+                            $(".btn-send-message").hide();
+                            $(".contact-fields-wrapper").hide(function() {
+                                $success.show();
+                            });
+                            if (gatrackingid && propertypath) {
+                                gtag('event', 'request_info', {
+                                    'event_category': 'property_page',
+                                    'event_label': propertypath,
+                                    'send_to': gatrackingid
+                                });
+                            }
+                        }
+                        $btn.prop("disabled", false).text(defText);
+                        console.log("data", data); 
+                    }
+                });
+
+                return false;
+            }
+        });
+
+    });
+    // END: JS for contact modal form
+
+    // JS for virtual open house request meeting link modal
+    $(".virtual-open-house-modal").on('show.bs.modal',function(e) {
+        var $this_modal = $(e.currentTarget);
+        $this_modal.find(".success-msg").hide();
+        $this_modal.find(".error-msg").hide();
+        $this_modal.find(".contact-fields").removeClass("error");
+        $this_modal.find(".contact-form").trigger("reset").show();
+        $this_modal.find(".contact-fields-wrapper").show();
+        $this_modal.find(".btn-virtual-rsvp").prop("disabled", false).show();
+    });
+
+    $(".virtual-open-house-modal").on('shown.bs.modal',function(e) {
+        var $this_modal = $(e.currentTarget);
+        $this_modal.find("input[name='name']").focus();
+    });
+
+    $('.virtual-open-house-form').each(function () {
+
+        $(this).validate({
+            focusInvalid: false,
+            rules: {
+                name: { required: true },
+                email: { required: true, email: true },
+                phone: { required: true }
+            },
+            submitHandler: function (form) {
+
+                var $form = $(form);
+                var fdata = $form.serialize();
+                var $success = $form.parent().find(".success-msg");
+                var $error = $form.find(".error-msg");
+                var $btn = $form.find(".btn-virtual-rsvp");
+                var defText = $btn.text();
+                var spin = '<img src="/static/img/spinner-big.gif" class="mr-2" style="width:20px;height:20px;"></img>';
+                $btn.prop("disabled", true).html(spin + defText);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/message/site/virtual-open-house",
+                    data: fdata,
+                    success: function (data) {
+                        console.log(data); 
+                        if (data.ERROR) {
+                            $error.fadeIn(250).text(data.ERRORMESSAGE);
+                        } else {
+                            $error.hide();
+                            $(".btn-virtual-rsvp").hide();
+                            $(".contact-fields-wrapper").hide(function () {
+                                $success.show();
+                            });
+                        }
+                        $btn.prop("disabled", false).text(defText);
+                    }
+                });
+
+                return false;
+            }
+        });
+        
+    });
+
+    if (demoMode) {
+        if (!getUrlParam("card") || getUrlParam("iframe")) {
+            $(".demo-mode-modal").modal();
+        }
+    }
+     
+ });

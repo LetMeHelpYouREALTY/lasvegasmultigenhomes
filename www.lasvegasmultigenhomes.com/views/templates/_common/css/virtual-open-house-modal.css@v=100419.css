@@ -1,0 +1,99 @@
+.virtual-open-house-modal .modal-content {
+    border-radius: 0;
+}
+.virtual-open-house-modal .modal-dialog {
+    max-width: 500px;
+}
+.virtual-open-house-modal .modal-header {
+    border-bottom: none;
+    background-color: #fafafa;
+}
+.virtual-open-house-modal .modal-footer {
+    border-top: none;
+}
+.virtual-open-house-modal .captchaContact-wrapper input {
+    border-radius: 0;
+    height: 50px;
+}
+.virtual-open-house-modal .contact-fields, .virtual-open-house-modal .captcha-input {
+    height: 50px;
+    border-radius: 0;
+}
+.virtual-open-house-modal .success-msg {
+    display: none;
+    min-height: 200px;
+    padding-top: 25px;
+}
+.virtual-open-house-modal input::-webkit-input-placeholder, .virtual-open-house-modal textarea::-webkit-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.virtual-open-house-modal input:-ms-input-placeholder, .virtual-open-house-modal textarea:-ms-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.virtual-open-house-modal input::-ms-input-placeholder, .virtual-open-house-modal textarea::-ms-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.virtual-open-house-modal input::placeholder, .virtual-open-house-modal textarea::placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.virtual-open-house-modal .error-msg {
+    padding-left: 16px;
+    color: #f9bb2d;
+}
+.virtual-open-house-modal .virtual-open-house-modal-btns {
+    padding-right: 15px;
+}
+.virtual-open-house-modal .btn-send-message {
+  min-width: 150px;
+}
+.virtual-open-house-modal label.error {
+  display: none !important;
+}
+.virtual-open-house-modal input.error, .virtual-open-house-modal textarea.error {
+  border: 1px solid #f9bb2d;
+}
+
+.virtual-open-house-modal .modal-header .close {
+    margin: 5px;
+    padding: 0;
+}
+.virtual-open-house-modal .contact-message {
+  height: 100px;
+}
+
+.virtual-open-house-modal .captcha-div {
+  display: none;
+}
+
+.virtual-open-house-modal .contact-fields-wrapper {
+  padding: 0 40px;
+}
+
+.virtual-open-house-modal .modal-agent-photo {
+  margin-top:-55px;
+  margin-left:5px;
+}
+
+@media screen and (max-width: 575px) {
+
+  .virtual-open-house-modal .contact-fields, .virtual-open-house-modal .captcha-input {
+    height: 40px;
+  }
+
+  .virtual-open-house-modal .contact-message {
+    height: 60px;
+  }
+
+  .virtual-open-house-modal .contact-fields-wrapper {
+    padding: 0 20px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+    
+}

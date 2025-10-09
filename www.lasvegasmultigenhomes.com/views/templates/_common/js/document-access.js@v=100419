@@ -1,0 +1,226 @@
+
+$(function() {
+
+    var documentid = 0;
+    // console.log("homePath", homePath); 
+
+    $(".doc-access-lead").on("click",function(e) {
+    	e.preventDefault();
+        var docname = $(this).data("document-name") || $(this).text();
+        if (docname.trim().length === 0) {
+            docname = "Document";
+        }
+        $("#doc-lead-modal .modal-title").text(docname);
+        $("#doc-lead-modal .doc-download-link").text(docname);
+
+        documentid = $(this).data("documentid");
+
+        if ($(this).hasClass("doc-access-auth")) {
+            requestObj = { "documentid": documentid };
+            getLeadDocument(requestObj);
+        }
+        
+        $("#doc-lead-modal").modal();
+
+    	return false;
+
+    });
+
+    $(".doc-access-password").click(function(e) {
+        e.preventDefault();
+        var docname = $(this).data("document-name") || $(this).text();
+        $("#doc-password-modal .modal-title").text(docname);
+        $("#doc-password-modal .doc-download-link").text(docname);
+
+        documentid = $(this).data("documentid");
+
+        if ($(this).hasClass("doc-access-auth")) {
+            requestObj = { "documentid": documentid };
+            getPasswordDocument(requestObj);
+        }
+
+        $("#doc-password-modal").modal();
+
+
+        return false;
+    });
+
+    $('#doc-lead-modal').on('show.bs.modal', function() {
+        $("#doc-lead-modal #errormsg_lead").text('').hide();
+        $("#doc-lead-modal .doc-lead-box").show();
+        $("#doc-lead-modal .doc-download-box").hide();
+        $("#doc-lead-modal .doc-download-url").attr("href","#");
+    });
+
+    $('#doc-lead-modal').on('shown.bs.modal', function() {
+    	$("#doc-lead-modal .dname").focus();
+    });
+
+    $('#doc-password-modal').on('show.bs.modal', function() {
+        $(".spinner-doc-access").hide();
+        $("#doc-password-modal .dpassword").val('');
+        $("#doc-password-modal #errormsg_password").text('').hide();
+        $("#doc-password-modal .doc-password-box").show();
+        $("#doc-password-modal .doc-download-box").hide();
+        $("#doc-password-modal .doc-download-url").attr("href","#");
+    });
+
+    $('#doc-password-modal').on('shown.bs.modal', function() {
+        $("#doc-password-modal .dpassword").focus();
+    });
+
+    function getLeadDocument(requestObj) {
+
+        $("#go_doc_lead").addClass("btn-disabled");
+        $(".spinner-doc-access").show();
+
+        //console.log("got here",requestObj);
+
+        $.post(homePath + "/document-lead-api", requestObj, function(response) {
+
+            $(".spinner-doc-access").hide();
+            $("#go_doc_lead").removeClass("btn-disabled");
+            //console.log(response);
+
+            if (response.DOCUMENT.DOCUMENTURL) {
+                $(".doc-download-url").attr("href",response.DOCUMENT.DOCUMENTURL);
+                $(".doc-lead-box").slideUp(100,function() {
+                    $(".doc-download-box").slideDown(100);
+                });
+                $(".doc-link").addClass("doc-access-auth");
+            }
+            
+        });
+    }
+
+    var lead_rules = {
+        name: {
+            required: true,
+            minlength: 2
+        },
+        email: {
+            required: true,
+            email: true
+        },
+        phone: {
+            required: true,
+            minlength: 10,
+            maxlength: 20
+        }
+    }
+
+    var doc_lead_validator = $("#doc-lead-form").validate({
+        debug: false,
+        onkeyup: false,
+        rules: lead_rules,
+        showErrors: function(errorMap, errorList) {
+
+            if (doc_lead_validator.numberOfInvalids() > 0) {
+                $("#go_doc_lead").addClass("btn-disabled");
+                $("#errormsg_lead").text('Please complete all fields.').fadeIn();
+            } else {
+                $("#go_doc_lead").removeClass("btn-disabled");
+                $("#errormsg_lead").text('').fadeOut();
+            }
+
+            this.defaultShowErrors();
+
+        },
+        errorElement: "em",
+        submitHandler: function(form) {
+
+      		
+      		if (doc_lead_validator.numberOfInvalids() > 0) {
+      			
+      		} else {
+
+                var formdata = $("#doc-lead-form").serializeArray();
+                var requestObj = {};
+                $(formdata).each(function(index, obj){
+                    requestObj[obj.name] = obj.value;
+                });
+                requestObj.documentid = documentid;
+
+                getLeadDocument(requestObj);
+
+
+            }
+        	return false;
+        }
+
+    });
+
+    function getPasswordDocument(requestObj) {
+
+        $("#go_doc_password").addClass("btn-disabled");
+        $(".spinner-doc-access").show();
+
+        $.post(homePath + "/document-password-api", requestObj, function(response) {
+
+            $("#go_doc_password").removeClass("btn-disabled");
+            $(".spinner-doc-access").hide();
+            console.log(response);
+
+            if (response.DOCUMENT.DOCUMENTURL) {
+                $(".doc-download-url").attr("href",response.DOCUMENT.DOCUMENTURL);
+                $(".doc-password-box").slideUp(100,function() {
+                    $(".doc-download-box").slideDown(100);
+                });
+                $(".doc-link").addClass("doc-access-auth");
+            } else if (response.ERRORMSG) {
+                $("#errormsg_password").text(response.ERRORMSG).show();
+            }
+            
+        });
+    }
+
+    var pwd_rules = {
+        password: {
+            required: true,
+            minlength: 4
+        }
+    }
+
+    var doc_password_validator = $("#doc-password-form").validate({
+        debug: false,
+        onkeyup: false,
+        rules: pwd_rules,
+        showErrors: function(errorMap, errorList) {
+
+            if (doc_password_validator.numberOfInvalids() > 0) {
+                $("#go_doc_password").addClass("btn-disabled");
+                $("#errormsg_password").text('Please enter a valid password.').fadeIn();
+            } else {
+                $("#go_doc_password").removeClass("btn-disabled");
+                $("#errormsg_password").text('').hide();
+            }
+
+            this.defaultShowErrors();
+
+        },
+        errorElement: "em",
+        submitHandler: function(form) {
+
+            //console.log("got here");
+
+            if (doc_password_validator.numberOfInvalids() > 0) {
+                
+            } else {
+
+                var formdata = $("#doc-password-form").serializeArray();
+                var requestObj = {};
+                $(formdata).each(function(index, obj){
+                    requestObj[obj.name] = obj.value;
+                });
+                requestObj.documentid = documentid;
+
+                getPasswordDocument(requestObj);
+
+
+            }
+            return false;
+        }
+
+    });
+    
+});

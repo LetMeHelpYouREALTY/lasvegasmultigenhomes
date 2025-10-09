@@ -1,0 +1,99 @@
+.contact-modal .modal-content {
+    border-radius: 0;
+}
+.contact-modal .modal-dialog {
+    max-width: 500px;
+}
+.contact-modal .modal-header {
+    border-bottom: none;
+    background-color: #fafafa;
+}
+.contact-modal .modal-footer {
+    border-top: none;
+}
+.contact-modal .captchaContact-wrapper input {
+    border-radius: 0;
+    height: 50px;
+}
+.contact-modal .contact-fields, .contact-modal .captcha-input {
+    height: 50px;
+    border-radius: 0;
+}
+.contact-modal .success-msg {
+    display: none;
+    min-height: 200px;
+    padding-top: 25px;
+}
+.contact-modal input::-webkit-input-placeholder, .contact-modal textarea::-webkit-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.contact-modal input:-ms-input-placeholder, .contact-modal textarea:-ms-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.contact-modal input::-ms-input-placeholder, .contact-modal textarea::-ms-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.contact-modal input::placeholder, .contact-modal textarea::placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.contact-modal .error-msg {
+    padding-left: 16px;
+    color: #f9bb2d;
+}
+.contact-modal .contact-modal-btns {
+    padding-right: 15px;
+}
+.contact-modal .btn-send-message {
+  min-width: 150px;
+}
+.contact-modal label.error {
+  display: none !important;
+}
+.contact-modal input.error, .contact-modal textarea.error {
+  border: 1px solid #f9bb2d;
+}
+
+.contact-modal .modal-header .close {
+    margin: 5px;
+    padding: 0;
+}
+.contact-modal .contact-message {
+  height: 100px;
+}
+
+.contact-modal .captcha-div {
+  display: none;
+}
+
+.contact-modal .contact-fields-wrapper {
+  padding: 0 40px;
+}
+
+.contact-modal .modal-agent-photo {
+  margin-top:-55px;
+  margin-left:5px;
+}
+
+@media screen and (max-width: 575px) {
+
+  .contact-modal .contact-fields, .contact-modal .captcha-input {
+    height: 40px;
+  }
+
+  .contact-modal .contact-message {
+    height: 60px;
+  }
+
+  .contact-modal .contact-fields-wrapper {
+    padding: 0 20px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+    
+}

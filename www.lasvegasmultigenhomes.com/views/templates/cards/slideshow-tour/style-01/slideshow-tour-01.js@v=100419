@@ -1,0 +1,355 @@
+var audiotypes = {
+    "mp3": "audio/mpeg",
+    "mp4": "audio/mp4",
+    "ogg": "audio/ogg",
+    "wav": "audio/wav"
+}
+
+var iOSSafari = /iP(ad|od|hone)/i.test(window.navigator.userAgent) && /WebKit/i.test(window.navigator.userAgent) && !(/(CriOS|FxiOS|OPiOS|mercury)/i.test(window.navigator.userAgent));
+
+function soundbits(sound) {
+    var audio_element = document.createElement('audio')
+    if (audio_element.canPlayType) {
+        for (var i = 0; i < arguments.length; i++) {
+            var source_element = document.createElement('source')
+            source_element.setAttribute('src', arguments[i])
+            if (arguments[i].match(/\.(\w+)$/i))
+                source_element.setAttribute('type', audiotypes[RegExp.$1])
+            audio_element.appendChild(source_element)
+        }
+        audio_element.load();
+
+        audio_element.playclip = function () {
+            audio_element.play().catch(function (err) {
+                $(".audio-control").removeClass("playing").addClass("paused");
+                $(".audio-control").find(".fa-volume-mute").show();
+                $(".audio-control").find(".fa-volume-up").hide();
+                //console.log(err);
+            });
+        }
+        audio_element.pauseclip = function () {
+            audio_element.pause();
+        }
+        audio_element.startclip = function () {
+            audio_element.pause();
+            audio_element.currentTime = 0;
+            audio_element.play();
+        }
+        return audio_element;
+    }
+}
+
+$(function () {
+
+    var audioFile = $(".audio-control").data("audio-clip");
+    var audioAutoplay = $(".audio-control").data("audio-autoplay");
+
+    if (typeof audioFile === 'undefined') {
+        audioFile = "";
+    }
+
+    if (typeof audioAutoplay === 'undefined') {
+        audioAutoplay = 0;
+    }
+
+    if (audioFile.length > 0) {
+
+        var music = soundbits("https://s3.amazonaws.com/cribflyer-publicsite/music/tour/" + audioFile);
+        music.onended = function (event) { music.startclip(); }
+
+        canAutoplay.audio({ timeout: 3000 }).then(function (obj) {
+            if (obj.result === true && audioAutoplay === 1) {
+                $(".audio-control").prop("checked", true);
+                music.playclip();
+                $(".audio-control").removeClass("paused").addClass("playing");
+                $(".audio-control").find(".fa-volume-mute").hide();
+                $(".audio-control").find(".fa-volume-up").show();
+            } else {
+                $(".audio-control").prop("checked", false);
+                $(".audio-control").removeClass("playing").addClass("paused");
+                $(".audio-control").find(".fa-volume-mute").show();
+                $(".audio-control").find(".fa-volume-up").hide();
+            }
+            if (obj.error && obj.error.message) {
+                console.log("Audio error:", obj.error.message); 
+            }
+        });
+
+        $(".audio-control").on("click", function () {
+
+            if ($(this).hasClass("playing")) {
+
+                $(this).removeClass("playing").addClass("paused");
+                $(this).find(".fa-volume-mute").show();
+                $(this).find(".fa-volume-up").hide();
+                music.pauseclip();
+
+            } else if ($(this).hasClass("paused")) {
+
+                $(this).removeClass("paused").addClass("playing");
+                $(this).find(".fa-volume-mute").hide();
+                $(this).find(".fa-volume-up").show();
+                music.playclip();
+
+            } else {
+
+                $(this).removeClass("paused").addClass("playing");
+                $(this).find(".fa-volume-mute").hide();
+                $(this).find(".fa-volume-up").show();
+                music.startclip();
+
+            }
+
+        });
+
+    }
+
+    $(".slideshow-control").prop("checked", true);
+    $(".slideshow-control").addClass('playing');
+
+    var numphotos = $(".thumbnail-bar").data("numphotos");
+
+    var $billboard = $('.main-slick').slick({
+        lazyLoad: "progressive",
+        useTransform: true,
+        useCSS: true,
+        draggable: true,
+        variableWidth: false,
+        swipeToSlide: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        speed: 1000,
+        infinite: true,
+        pauseOnHover: false,
+        asNavFor: '.nav-slick'
+    }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+
+    }).on('afterChange', function (event, slick, currentSlide, nextSlide) {
+
+        if (numphotos < (currentSlide + 1)) {
+            $('#imgCount').html(numphotos);
+        } else {
+            var tmp = currentSlide + 1;
+            tmp = tmp.toString() + " of " + numphotos.toString();
+            $('#imgCount').html(tmp);
+        }
+
+        var caption = $(this).find(".slick-current").data("caption");
+
+        if (caption && caption.length > 0) {
+            $(".caption-bar").text(caption).show();
+        } else {
+            $(".caption-bar").text('').hide();
+        }
+
+    });
+
+    var $scroller = $('.nav-slick').slick({
+        lazyLoad: lazyLoadType,
+        useTransform: false,
+        useCSS: false,
+        slidesToShow: 15,
+        slidesToScroll: 1,
+        swipeToSlide: true,
+        variableWidth: false,
+        asNavFor: '.main-slick',
+        dots: false,
+        draggable: true,
+        infinite: true,
+        arrows: false,
+        centerMode: false,
+        focusOnSelect: true,
+        mobileFirst: true,
+        responsive: [
+            { breakpoint: 1600, settings: { slidesToShow: 15 } },
+            { breakpoint: 1500, settings: { slidesToShow: 14 } },
+            { breakpoint: 1400, settings: { slidesToShow: 13 } },
+            { breakpoint: 1300, settings: { slidesToShow: 12 } },
+            { breakpoint: 1200, settings: { slidesToShow: 11 } },
+            { breakpoint: 960, settings: { slidesToShow: 9 } },
+            { breakpoint: 768, settings: { slidesToShow: 7 } },
+            { breakpoint: 600, settings: { slidesToShow: 5 } },
+            { breakpoint: 480, settings: { slidesToShow: 4 } },
+            { breakpoint: 400, settings: { slidesToShow: 3 } },
+            { breakpoint: 200, settings: { slidesToShow: 2 } }
+        ]
+    });
+
+    function stopSlideshow() {
+        $(".slideshow-control").prop("checked", false);
+        $(".slideshow-control").removeClass("playing").addClass("paused");
+        $billboard.slick('slickPause');
+    }
+
+    $(".slideshow-control").on("click", function () {
+
+        if ($(this).hasClass("playing")) {
+
+            $(this).removeClass("playing").addClass("paused");
+            $billboard.slick('slickPause');
+            //$(".slide").removeClass("slideshowEffect");
+
+        } else if ($(this).hasClass("paused")) {
+
+            $(this).removeClass("paused").addClass("playing");
+            $billboard.slick('slickNext');
+            $billboard.slick('slickPlay');
+
+        } else {
+
+            $(this).removeClass("paused").addClass("playing");
+            $billboard.slick('slickNext');
+            $billboard.slick('slickPlay');
+
+        }
+
+    });
+
+    $billboard.on('click', function () {
+        $(this).slick('slickNext');
+    });
+
+    $(".thumb-control.left").on("click", function () {
+        $billboard.slick('slickPrev');
+    });
+
+    $(".thumb-control.right").on("click", function () {
+        $billboard.slick('slickNext');
+    });
+
+    $("#btn-photos").on('click', function () {
+        $scroller.slick('slickGoTo', 0);
+        $('#imgCount').html("1");
+    });
+
+    // jump to video slide
+    $(".btn-video, .first-video").on('click', function () {
+        var videoSlide = $(".first-video").data("slide-index");
+        if (typeof videoSlide !== 'undefined') {
+            $scroller.slick('slickGoTo', videoSlide - 1);
+            stopSlideshow();
+            if ($(".box_infofluid").is(':visible')) {
+                $(".box_infofluid").hide();
+                $(".btn_infofluid").delay(100).show();
+            }
+        }
+    });
+
+    $(".btn_infofixed, .btn_infofluid").hover(function () {
+        $(this).toggleClass('opacity-70');
+    });
+
+    $(".btn_infofluid").on('click', function () {
+        if ($(this).is(':visible')) {
+            $(this).hide();
+            $(".box_infofluid").delay(100).show();
+        }
+    });
+
+    $(".btn_infoclose").on('click', function () {
+        if ($(".box_infofluid").is(':visible')) {
+            $(".box_infofluid").hide();
+            $(".btn_infofluid").delay(100).show();
+        }
+    });
+
+    // SIDEBAR toggle
+    $("#btn-inquire, #btn_close_inquire").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    // FORM VALIDATION
+    $(".contact-form").on("click", function (e) {
+        e.stopPropagation();
+        var $form = $(this);
+        var $captcha = $form.find(".captcha-div");
+        var visible = $captcha.is(':visible');
+        if (!visible) {
+            $captcha.show();
+            $captcha.load("/message/captcha?_=" + new Date().getTime());
+        }
+    });
+
+    $('.contact-form').each(function () {
+
+        $(this).validate({
+            focusInvalid: false,
+            errorPlacement: $.noop,
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                phone: {
+                    required: true
+                },
+                message: {
+                    required: true
+                },
+                captcha: {
+                    required: true
+                }
+            },
+            invalidHandler: function (form, validator) {
+                $(".error-msg").fadeIn(250).text("Missing required fields");
+            },
+            submitHandler: function (form) {
+
+                var $form = $(form);
+                var fdata = $form.serialize();
+                var $success = $form.parent().find(".success-msg");
+                var $error = $form.find(".error-msg");
+                var $captcha = $form.find(".captcha-div");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/message/site/contact",
+                    data: fdata,
+                    success: function (data) {
+                        if (data.ERROR) {
+                            $error.fadeIn(250).text(data.ERRORMESSAGE);
+                            $captcha.load("/message/captcha?_=" + new Date().getTime(), function () {
+                                if (!data.CAPTCHAVALID) {
+                                    $captcha.find(".captcha-input").css("border", "1px solid #DC3544");
+                                }
+                            });
+                        } else {
+
+                            $form.fadeOut(100, function () {
+                                $success.fadeIn(100, function () {
+                                    // Reset the form after 3 second delay.
+                                    setTimeout(function () {
+                                        $form.trigger("reset");
+                                        $success.hide();
+                                        $error.hide();
+                                        $form.show();
+                                        $captcha.hide();
+                                    }, 3000);
+                                });
+                            });
+
+                        }
+                    }
+                });
+
+                return false;
+            }
+        });
+
+    });
+
+    window.addEventListener("resize", function () {
+        $(".container-main-image, .img-main, .slick-slider, .slick-track").css("max-height", window.innerHeight - 180);
+    }, false);
+    
+    $(".container-main-image, .img-main, .slick-slider, .slick-track").css("max-height", window.innerHeight - 180);
+
+});
