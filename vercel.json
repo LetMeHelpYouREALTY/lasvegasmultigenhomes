@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "www.lasvegasmultigenhomes.com/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/www.lasvegasmultigenhomes.com/$1"
+    }
+  ]
+}
+
