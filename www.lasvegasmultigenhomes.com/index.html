@@ -576,7 +576,29 @@ opacity: 1;
 .card-photos .main-slick {
 padding-inline: var(--thumb-padding, 2px);
 }
-/* V0 GALLERY - ALL OLD SLIDER CSS REMOVED */
+/* V0 HERO SLIDESHOW CONSTRAINTS */
+.slick-slideshow {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  height: 600px !important;
+}
+
+.slick-slideshow .slide {
+  height: 600px !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* V0 FEATURED HOME THUMBNAIL CONSTRAINTS */
+.card-content[style*="background: #f7fafc"] .row .col-lg-6:first-child {
+  max-width: 500px !important;
+  margin: 0 auto !important;
+}
+
+.card-content[style*="background: #f7fafc"] .row .col-lg-6:first-child div[style*="display: grid"] {
+  max-width: 500px !important;
+  margin: 0 auto !important;
+}
 .card-photos .photo-slide {
 padding: var(--thumb-padding, 2px);
 cursor: pointer;
