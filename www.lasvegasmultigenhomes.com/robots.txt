@@ -1,0 +1,15 @@
+# Robots.txt for www.openhouseupdates.com
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.openhouseupdates.com/sitemap.xml
+
+# Disallow crawling of any administrative or plugin directories
+Disallow: /cdn-cgi/
+Disallow: /plugins/
+
+# Crawl-delay for good practice (optional)
+Crawl-delay: 1

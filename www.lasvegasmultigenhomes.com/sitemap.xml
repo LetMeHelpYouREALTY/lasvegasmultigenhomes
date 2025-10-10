@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage - Featured Property -->
+  <url>
+    <loc>https://www.openhouseupdates.com/</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg</image:loc>
+      <image:title>Dual Master Suite Home at 11312 Parkside Way West Summerlin</image:title>
+      <image:caption>Perfect Multi-Generational Home in Vistas at West Summerlin - 4BR/3BA</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Virtual Tour -->
+  <url>
+    <loc>https://www.openhouseupdates.com/tour.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Dual Master Suite Homes Guide (High Value SEO Page) -->
+  <url>
+    <loc>https://www.openhouseupdates.com/dual-master-suite-homes-las-vegas.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Open Houses Summerlin (High Value SEO Page) -->
+  <url>
+    <loc>https://www.openhouseupdates.com/open-houses-summerlin.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Additional New Pages (Add as you create them) -->
+  <!--
+  <url>
+    <loc>https://www.openhouseupdates.com/homes-with-casitas-las-vegas.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/benefits-multigenerational-living-las-vegas.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/west-summerlin-multi-gen-homes.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/henderson-multi-gen-homes.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/north-las-vegas-multi-gen-homes.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/las-vegas-neighborhoods-multigenerational-living.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/multigenerational-home-features.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/buying-guide-multigenerational-homes-las-vegas.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/financing-multigenerational-homes.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/about.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.openhouseupdates.com/contact.html</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+  
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://www.openhouseupdates.com/privacy.html</loc>
+    <lastmod>2025-02-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,152 @@
+.color-off-white, .off-white, .text-off-white { color: #fafafa; }
+.text-white, .color-white { color: #ffffff; }
+.bg-off-white { background-color: #fafafa }
+.bg-white { background-color: #fafafa }
+.text-ccc { color: #cccccc; }
+.text-bold, .font-bold { font-weight: bold; }
+
+.cursor-pointer { cursor: pointer; }
+.cursor-move { cursor: move; }
+
+.temp-layout { height:600px; }
+
+.w-10 { width: 10%; }
+.w-30 { width: 30%; }
+
+@media (max-width: 575.98px) { 
+    h1.display-4 {
+        font-size: 2.3rem;
+    }
+}
+
+.font-size-110 { font-size: 110%; }
+.font-size-100 { font-size: 100%; }
+.font-size-90 { font-size: 90%; }
+.font-size-80 { font-size: 80%; }
+.font-size-70 { font-size: 70%; }
+
+.fw-200 { font-weight: 200; }
+.fw-400 { font-weight: 400; }
+.fw-600 { font-weight: 600; }
+.fw-800 { font-weight: 800; }
+
+/* Link stuff */
+a.no-underline:hover { text-decoration: none; }
+a.text-underline { text-decoration: underline !important; }
+
+.card-content:not(.modal) {
+    position: relative;
+}
+.card-content > div {
+    position: relative;
+    z-index: 1;
+}
+/* Card default backgrounds */
+.card-content:not(.modal):nth-child(odd), 
+.card-content:nth-child(odd) .amenities-title {
+    background-color: var(--section-bgcolor-odd, #ffffff);
+}
+.card-content:not(.modal):nth-child(even), 
+.card-content:nth-child(even) .amenities-title {
+    background-color: var(--section-bgcolor-even, #fafafa);
+}
+
+.demo-mode-modal .modal-content {
+    opacity: 0.9;
+}
+.btn-custom, .btn-custom:hover {
+    background-color: var(--btn-icon-color);
+    color: #fafafa;
+}
+.btn-custom:hover { 
+    filter: brightness(90%);
+}
+
+.highlight-border { box-shadow: inset 0 0 0 6px rgba(38,154,250, 0.5) !important; }
+img.highlight-border { box-shadow: 6px 6px rgba(38,154,250, 0.5) !important;}
+
+.card-content {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+}
+.card-content a {
+    color: var(--body-link-color, #007bff);
+}
+.card-content a.btn {
+    color: var(--btn-text-color);
+}
+.card-status-banner { background-color: var(--btn-icon-color); }
+.card-status-banner h3 { color: var(--btn-text-color) !important; }
+
+#swipebox-title { padding-top: 10px; padding-left: 10px; padding-right: 60px; font-size: 1.0rem; line-height: 24px; }
+
+@media (max-width: 991.98px) { 
+    #swipebox-title { text-align: left; } 
+}
+@media (max-width: 767.98px) {
+    h1 { font-size: 2.0rem; }
+}
+@media (max-width: 575.98px) {
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.dash-animate {
+	position: relative;
+}
+.dash-animate::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background: linear-gradient(90deg, rgba(38, 154, 250, .8) 50%, rgba(255, 255, 255, .6) 50%),
+		linear-gradient(90deg, rgba(38, 154, 250, .8) 50%, rgba(255, 255, 255, .6) 50%),
+		linear-gradient(0deg, rgba(38, 154, 250, .8) 50%, rgba(255, 255, 255, .6) 50%),
+		linear-gradient(0deg, rgba(38, 154, 250, .8) 50%, rgba(255, 255, 255, .6) 50%);
+	background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+	background-size: 13px 2px, 13px 2px, 2px 13px, 2px 13px;
+	background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+	border-radius: 3px;
+	padding: 10px;
+	animation: dash 20s linear infinite;
+	pointer-events: none;
+}
+
+@keyframes dash {
+	to {
+		background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
+	}
+}
+.ui-edit {
+	position: absolute !important;
+    top: 0;
+	left: 0;
+	z-index: 98 !important;
+	width: fit-content;
+	transform-origin: top left;
+	transform: rotate(-90deg);
+	/* letter-spacing: 0.09em; */
+}
+.btn-edit-hover,
+.btn-edit-hover:hover {
+	font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+	color: #666 !important;
+	border: 1px solid #ccc;
+	background-color: #eee;
+	width: fit-content;
+	letter-spacing: 0.09em;
+	padding: 5px 10px 5px 10px;
+	height: 32px;
+	box-shadow: 0.1rem 0.1rem rgb(0 0 0 / 10%) !important
+}

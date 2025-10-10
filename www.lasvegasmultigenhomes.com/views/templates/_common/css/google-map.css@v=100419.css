@@ -1,0 +1,133 @@
+/*
+    $LISTING MAP
+========================================================================== */
+.roadmap,
+.svmap {
+    height: 580px;
+    width: 100%;
+}
+
+@media screen and (max-width: 479px) {
+    .roadmap {
+        height: 300px;
+    }
+}
+
+.roadmap img,
+.svmap img {
+    max-width: none;
+}
+
+/* $MAP CONTROLS */
+.map-navigation {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.map .list-item {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.map .list-item {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+.map .list-item:active,
+.map .list-item:focus,
+.map .list-item:hover,
+.map .list-item.active {
+    background-color: #3a3a3a;
+}
+
+.map .list-item a,
+.map .list-item a:active,
+.map .list-item a:focus,
+.map .list-item a:hover {
+    display: inline-block;
+    padding: 8px 9px;
+    text-decoration: none;
+    color: #000;
+}
+
+.map .list-item:active a,
+.map .list-item:focus a,
+.map .list-item:hover a,
+.map .list-item.active a {
+    padding: 8px 9px;
+    color: #fff;
+}
+
+/* Google Maps infowindow */
+.info-window {
+    display: table;
+    table-layout: fixed;
+    max-width: 445px;
+}
+
+.info-window-image,
+.info-window-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.info-window-image {
+    padding-top: 3px;
+    padding-right: 24px;
+}
+
+.info-window-image img {
+    height: 113px;
+    max-width: 113px;
+}
+
+.info-window-address {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #000;
+}
+
+.info-window-property-detail {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.43;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.25);
+}
+
+@media screen and (max-width: 768px) {
+    .map .list-item {
+        font-size: 11px;
+    }
+    .map .list-item a,
+    .map .list-item a:active,
+    .map .list-item a:focus,
+    .map .list-item a:hover {
+        display: inline-block;
+        padding: 2px 3px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .map .list-item:active a,
+    .map .list-item:focus a,
+    .map .list-item:hover a,
+    .map .list-item.active a {
+        padding: 8px 9px;
+        color: #fff;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .map .list-item.hidden-phones {
+        display: none !important;
+    }
+}
+.gmnoprint img { 
+    max-width: none !important; 
+    max-height: none !important;
+}

@@ -1,0 +1,51 @@
+.agent-bio-modal .modal-content, .agent-testimonials-modal .modal-content {
+    border-radius: 0;
+}
+.agent-bio-modal .modal-dialog, .agent-testimonials-modal .modal-dialog  {
+    max-width: 500px;
+}
+.agent-bio-modal .modal-header, .agent-testimonials-modal .modal-header  {
+    border-bottom: none;
+    background-color: #fafafa;
+}
+.agent-bio-modal .modal-footer, .agent-testimonials-modal .modal-footer  {
+    border-top: none;
+}
+
+.agent-bio-modal .agent-bio-text, .agent-testimonials-modal .agent-testimonials-text {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.agent-bio-modal ::-webkit-scrollbar, .agent-testimonials-modal ::-webkit-scrollbar{
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+.agent-bio-modal a {
+    color: var(--nav-link-color) !important;
+    text-decoration: underline;
+}
+
+.agent-bio-modal ::-webkit-scrollbar-thumb, .agent-testimonials-modal ::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.agent-testimonials-modal .horiz-line {
+  border-top: 1px solid #aaa;
+}
+
+.agent-bio-modal .modal-agent-photo, .agent-testimonials-modal .modal-agent-photo {
+  margin-top:-55px;
+  margin-left:5px;
+}
+
+@media only screen and (max-width: 500px) {
+    .agent-bio-modal .agent-bio-text, .agent-testimonials-modal .agent-testimonials-text {
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+}
+

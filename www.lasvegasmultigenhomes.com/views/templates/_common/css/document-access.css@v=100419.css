@@ -1,0 +1,102 @@
+.doc-modal .modal-footer {
+    border: none;
+    text-align: center;
+}
+.doc-modal .modal-header {
+    border: none;
+    background-color: #fafafa;
+    color: #333;
+    text-align: center;
+}
+.doc-modal .modal-content {
+    border: none;
+    border-radius: 0;
+    background-image: url(https://s3.amazonaws.com/cribflyer-publicsite/images/triangles-bg.jpg);
+    background-size: cover;
+}
+.doc-modal .modal-dialog {
+    max-width: 600px;
+}
+
+@media screen and (min-width: 768px) { 
+  .doc-modal.modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+/* .doc-modal .modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+} */
+.doc-modal .modal-body p {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 120%;
+  color: #444;
+}
+
+.doc-modal.modal.fade .modal-dialog 
+{
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+.doc-modal .btn-view-document {
+    border-radius: 0;
+    border: 1px solid #fafafa;
+    text-transform: uppercase;
+    font-size: 110%;
+    width: 100%;
+    height: 60px;
+}
+.doc-modal .btn-view-document:hover {
+    color: #fafafa;
+}
+.doc-modal .doc-lead-box, .doc-modal .doc-password-box {
+    max-width: 325px;
+    margin:auto;
+}
+.doc-modal .input-group-addon {
+    min-width: 50px;
+    border-radius: 0;
+    font-size: 16px;
+}
+.doc-modal .form-control {
+    height: 50px;
+    border-radius: 0;
+}
+.doc-modal em {
+    display: none !important;
+}
+.doc-modal .lead-error-msg, .doc-modal .password-error-msg {
+    text-align: center;
+}
+
+.doc-modal input::-webkit-input-placeholder, .doc-modal textarea::-webkit-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.doc-modal input:-ms-input-placeholder, .doc-modal textarea:-ms-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.doc-modal input::-ms-input-placeholder, .doc-modal textarea::-ms-input-placeholder {
+  color: #999;
+  font-weight: lighter;
+}
+.doc-modal input::placeholder, .doc-modal textarea::placeholder {
+  color: #999;
+  font-weight: lighter;
+}
