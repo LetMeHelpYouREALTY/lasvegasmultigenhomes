@@ -3813,6 +3813,7 @@ this.showNum(i);
 
 // V0 MODERN GALLERY FUNCTIONS - COMPLETELY ISOLATED
 function v0ChangeImage(imageSrc, altText, clickedElement) {
+  console.log('v0ChangeImage called:', imageSrc, altText, clickedElement);
   const mainImage = document.getElementById('v0MainImage');
   if (mainImage) {
     mainImage.src = imageSrc;
@@ -3825,10 +3826,14 @@ function v0ChangeImage(imageSrc, altText, clickedElement) {
     if (clickedElement) {
       clickedElement.classList.add('active');
     }
+    console.log('Image changed successfully');
+  } else {
+    console.error('v0MainImage element not found');
   }
 }
 
 function v0OpenLightbox(imageSrc) {
+  console.log('v0OpenLightbox called:', imageSrc);
   // Remove any existing lightbox
   const existingLightbox = document.querySelector('.v0-lightbox');
   if (existingLightbox) {
