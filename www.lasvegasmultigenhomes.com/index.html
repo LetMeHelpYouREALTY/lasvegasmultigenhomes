@@ -1655,22 +1655,22 @@ Multi-Gen Features
   </div>
   
   <div class="v0-thumbnail-strip">
-    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg', 'Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas')">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg', 'Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas', this)">
       <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg" alt="Front exterior" />
     </div>
-    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg', 'Open concept living room with fireplace in multi-generational Summerlin home')">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg', 'Open concept living room with fireplace in multi-generational Summerlin home', this)">
       <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg" alt="Living room" />
     </div>
-    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg', 'Primary master suite with ensuite bathroom and walk-in closet')">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg', 'Primary master suite with ensuite bathroom and walk-in closet', this)">
       <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg" alt="Master suite" />
     </div>
-    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg', 'Second master suite bedroom perfect for multi-generational living')">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg', 'Second master suite bedroom perfect for multi-generational living', this)">
       <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg" alt="Second master" />
     </div>
-    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg', 'Updated kitchen with island and modern appliances in West Summerlin home')">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg', 'Updated kitchen with island and modern appliances in West Summerlin home', this)">
       <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg" alt="Kitchen" />
     </div>
-    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg', 'Dining area adjacent to kitchen with mountain views')">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg', 'Dining area adjacent to kitchen with mountain views', this)">
       <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg" alt="Dining area" />
     </div>
   </div>
@@ -3812,7 +3812,7 @@ this.showNum(i);
 });
 
 // V0 MODERN GALLERY FUNCTIONS - COMPLETELY ISOLATED
-function v0ChangeImage(imageSrc, altText) {
+function v0ChangeImage(imageSrc, altText, clickedElement) {
   const mainImage = document.getElementById('v0MainImage');
   if (mainImage) {
     mainImage.src = imageSrc;
@@ -3822,7 +3822,9 @@ function v0ChangeImage(imageSrc, altText) {
     document.querySelectorAll('.v0-thumbnail').forEach(thumb => {
       thumb.classList.remove('active');
     });
-    event.currentTarget.classList.add('active');
+    if (clickedElement) {
+      clickedElement.classList.add('active');
+    }
   }
 }
 
