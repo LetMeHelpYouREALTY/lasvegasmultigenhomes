@@ -576,10 +576,13 @@ opacity: 1;
 .card-photos .main-slick {
 padding-inline: var(--thumb-padding, 2px);
 }
-/* V0 HERO SLIDESHOW CONSTRAINTS */
+/* V0 AGGRESSIVE HERO CONSTRAINTS - FORCE ALL CONTAINERS */
+.card-top-header,
+.card-top-header .slick-slideshow,
 .slick-slideshow {
   max-width: 1200px !important;
   margin: 0 auto !important;
+  width: 100% !important;
   height: 600px !important;
 }
 
@@ -587,6 +590,14 @@ padding-inline: var(--thumb-padding, 2px);
   height: 600px !important;
   background-size: cover !important;
   background-position: center !important;
+}
+
+/* V0 AGGRESSIVE MAIN CONTENT CONSTRAINTS */
+.card-content,
+.card-content .container,
+.card-content .container-fluid {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }
 
 /* V0 FEATURED HOME THUMBNAIL CONSTRAINTS */
@@ -597,6 +608,18 @@ padding-inline: var(--thumb-padding, 2px);
 
 .card-content[style*="background: #f7fafc"] .row .col-lg-6:first-child div[style*="display: grid"] {
   max-width: 500px !important;
+  margin: 0 auto !important;
+}
+
+/* V0 FORCE ALL IMAGES TO BE CONSTRAINED */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* V0 OVERRIDE BOOTSTRAP FULL-WIDTH */
+.container-fluid {
+  max-width: 1200px !important;
   margin: 0 auto !important;
 }
 .card-photos .photo-slide {
