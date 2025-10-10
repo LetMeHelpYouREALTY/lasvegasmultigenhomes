@@ -576,22 +576,25 @@ opacity: 1;
 .card-photos .main-slick {
 padding-inline: var(--thumb-padding, 2px);
 }
-/* Force slider containers to be properly sized - override all other styles */
+/* NUCLEAR OPTION: Force slider containers to be properly sized - override ALL styles including JavaScript */
 .card-photos .main-slick,
 .card-photos .main-slick .slide,
 .main-slick,
-.main-slick .slide {
+.main-slick .slide,
+.slick-slider,
+.slick-slide {
   max-width: 700px !important;
   margin: 0 auto !important;
   width: auto !important;
 }
 
-/* Force slider images to be properly sized - override all other styles */
+/* NUCLEAR OPTION: Force slider images to be properly sized - override ALL styles including JavaScript */
 .card-photos .main-slick .slide img,
 .card-photos .main-slick img,
 .main-slick .slide img,
 .main-slick img,
-.slide img {
+.slide img,
+.slick-slide img {
   max-width: 700px !important;
   max-height: 500px !important;
   width: auto !important;
@@ -599,6 +602,12 @@ padding-inline: var(--thumb-padding, 2px);
   margin: 0 auto !important;
   display: block !important;
   object-fit: contain !important;
+}
+
+/* Force the entire slider section to be constrained */
+.card-photos {
+  max-width: 700px !important;
+  margin: 0 auto !important;
 }
 .card-photos .photo-slide {
 padding: var(--thumb-padding, 2px);
@@ -3811,6 +3820,29 @@ asNavFor: '.card-photos .nav-slick'
 }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 }).on('afterChange', function (event, slick, currentSlide, nextSlide) {
 });
+
+// NUCLEAR OPTION: Force slider constraints after initialization
+setTimeout(function() {
+  $('.card-photos .main-slick').css({
+    'max-width': '700px',
+    'margin': '0 auto',
+    'width': 'auto'
+  });
+  $('.card-photos .main-slick .slide').css({
+    'max-width': '700px',
+    'margin': '0 auto',
+    'width': 'auto'
+  });
+  $('.card-photos .main-slick img').css({
+    'max-width': '700px',
+    'max-height': '500px',
+    'width': 'auto',
+    'height': 'auto',
+    'margin': '0 auto',
+    'display': 'block',
+    'object-fit': 'contain'
+  });
+}, 100);
 var $scroller = $('.card-photos .nav-slick').slick({
 slidesToShow: 12,
 slidesToScroll: 12,
