@@ -576,6 +576,14 @@ opacity: 1;
 .card-photos .main-slick {
 padding-inline: var(--thumb-padding, 2px);
 }
+/* Force slider containers to be properly sized - override all other styles */
+.main-slick,
+.main-slick .slide {
+  max-width: 700px !important;
+  margin: 0 auto !important;
+  width: auto !important;
+}
+
 /* Force slider images to be properly sized - override all other styles */
 .main-slick .slide img,
 .main-slick img,
