@@ -576,39 +576,7 @@ opacity: 1;
 .card-photos .main-slick {
 padding-inline: var(--thumb-padding, 2px);
 }
-/* NUCLEAR OPTION: Force slider containers to be properly sized - override ALL styles including JavaScript */
-.card-photos .main-slick,
-.card-photos .main-slick .slide,
-.main-slick,
-.main-slick .slide,
-.slick-slider,
-.slick-slide {
-  max-width: 700px !important;
-  margin: 0 auto !important;
-  width: auto !important;
-}
-
-/* NUCLEAR OPTION: Force slider images to be properly sized - override ALL styles including JavaScript */
-.card-photos .main-slick .slide img,
-.card-photos .main-slick img,
-.main-slick .slide img,
-.main-slick img,
-.slide img,
-.slick-slide img {
-  max-width: 700px !important;
-  max-height: 500px !important;
-  width: auto !important;
-  height: auto !important;
-  margin: 0 auto !important;
-  display: block !important;
-  object-fit: contain !important;
-}
-
-/* Force the entire slider section to be constrained */
-.card-photos {
-  max-width: 700px !important;
-  margin: 0 auto !important;
-}
+/* V0 GALLERY - ALL OLD SLIDER CSS REMOVED */
 .card-photos .photo-slide {
 padding: var(--thumb-padding, 2px);
 cursor: pointer;
@@ -1647,53 +1615,126 @@ Multi-Gen Features
 </div>
 </div>
 
-<!-- NEW CLEAN SLIDER -->
-<div class="photo-gallery-container" style="max-width: 700px; margin: 0 auto;">
-<div class="main-image-container text-center mb-3">
-<img id="mainImage" src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg" 
-     style="max-width: 700px; max-height: 500px; width: auto; height: auto; margin: 0 auto; display: block; cursor: pointer;" 
-     alt="Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas"
-     onclick="openLightbox(this.src)">
+<!-- V0 MODERN PHOTO GALLERY -->
+<div class="v0-gallery-container">
+  <div class="v0-main-image-wrapper">
+    <img 
+      id="v0MainImage" 
+      src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg"
+      alt="Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas"
+      class="v0-main-image"
+      onclick="v0OpenLightbox(this.src)"
+    />
+  </div>
+  
+  <div class="v0-thumbnail-strip">
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg', 'Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas')">
+      <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg" alt="Front exterior" />
+    </div>
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg', 'Open concept living room with fireplace in multi-generational Summerlin home')">
+      <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg" alt="Living room" />
+    </div>
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg', 'Primary master suite with ensuite bathroom and walk-in closet')">
+      <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg" alt="Master suite" />
+    </div>
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg', 'Second master suite bedroom perfect for multi-generational living')">
+      <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg" alt="Second master" />
+    </div>
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg', 'Updated kitchen with island and modern appliances in West Summerlin home')">
+      <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg" alt="Kitchen" />
+    </div>
+    <div class="v0-thumbnail" onclick="v0ChangeImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg', 'Dining area adjacent to kitchen with mountain views')">
+      <img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=100,height=100,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg" alt="Dining area" />
+    </div>
+  </div>
 </div>
 
-<div class="thumbnail-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 8px; max-width: 700px; margin: 0 auto;">
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg', 'Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3298839/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Front exterior of dual master suite home at 11312 Parkside Way in Vistas at West Summerlin Las Vegas">
-</div>
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg', 'Open concept living room with fireplace in multi-generational Summerlin home')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291747/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Open concept living room with fireplace in multi-generational Summerlin home">
-</div>
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg', 'Primary master suite with ensuite bathroom and walk-in closet')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291745/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Primary master suite with ensuite bathroom and walk-in closet">
-</div>
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg', 'Second master suite bedroom perfect for multi-generational living')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291746/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Second master suite bedroom perfect for multi-generational living">
-</div>
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg', 'Updated kitchen with island and modern appliances in West Summerlin home')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291787/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Updated kitchen with island and modern appliances in West Summerlin home">
-</div>
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg', 'Dining area adjacent to kitchen with mountain views')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291788/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Dining area adjacent to kitchen with mountain views">
-</div>
-<div class="thumbnail-item" onclick="changeMainImage('https://photos.cribflyer-proxy.com/cdn-cgi/image/width=700,height=500,fit=contain,rotate=0,format=auto,quality=85/4616/65307/3291789/photo.jpg', 'Spacious backyard with covered patio ready for pool installation')">
-<img src="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=80,height=80,fit=crop,rotate=0,format=auto,quality=85/4616/65307/3291789/photo.jpg" 
-     style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid #ddd;" 
-     alt="Spacious backyard with covered patio ready for pool installation">
-</div>
-</div>
-</div>
+<style>
+/* V0 MODERN GALLERY STYLES - COMPLETELY ISOLATED */
+.v0-gallery-container {
+  max-width: 700px !important;
+  margin: 0 auto !important;
+  padding: 20px !important;
+  background: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+.v0-main-image-wrapper {
+  text-align: center !important;
+  margin-bottom: 20px !important;
+}
+
+.v0-main-image {
+  max-width: 100% !important;
+  max-height: 500px !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: transform 0.3s ease !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
+}
+
+.v0-main-image:hover {
+  transform: scale(1.02) !important;
+}
+
+.v0-thumbnail-strip {
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+.v0-thumbnail {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  border: 3px solid transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.v0-thumbnail:hover {
+  border-color: #2b6cb0 !important;
+  transform: translateY(-2px) !important;
+}
+
+.v0-thumbnail.active {
+  border-color: #2b6cb0 !important;
+  box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.2) !important;
+}
+
+.v0-thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* V0 LIGHTBOX STYLES */
+.v0-lightbox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0,0,0,0.95) !important;
+  z-index: 10000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+.v0-lightbox img {
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+}
+</style>
 </div>
 </div>
 </div>
@@ -3907,44 +3948,52 @@ asNavFor: '.card-photos .nav-slick'
 }).on('afterChange', function (event, slick, currentSlide, nextSlide) {
 });
 
-// Simple photo gallery functions
-function changeMainImage(imageSrc, altText) {
-  const mainImage = document.getElementById('mainImage');
-  mainImage.src = imageSrc;
-  mainImage.alt = altText;
+// V0 MODERN GALLERY FUNCTIONS - COMPLETELY ISOLATED
+function v0ChangeImage(imageSrc, altText) {
+  const mainImage = document.getElementById('v0MainImage');
+  if (mainImage) {
+    mainImage.src = imageSrc;
+    mainImage.alt = altText;
+    
+    // Update active thumbnail
+    document.querySelectorAll('.v0-thumbnail').forEach(thumb => {
+      thumb.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+  }
 }
 
-function openLightbox(imageSrc) {
-  // Simple lightbox implementation
+function v0OpenLightbox(imageSrc) {
+  // Remove any existing lightbox
+  const existingLightbox = document.querySelector('.v0-lightbox');
+  if (existingLightbox) {
+    existingLightbox.remove();
+  }
+  
+  // Create V0 lightbox
   const lightbox = document.createElement('div');
-  lightbox.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  `;
+  lightbox.className = 'v0-lightbox';
   
   const img = document.createElement('img');
   img.src = imageSrc;
-  img.style.cssText = `
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-  `;
   
   lightbox.appendChild(img);
   document.body.appendChild(lightbox);
   
+  // Close on click
   lightbox.onclick = function() {
     document.body.removeChild(lightbox);
   };
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const lightbox = document.querySelector('.v0-lightbox');
+      if (lightbox) {
+        document.body.removeChild(lightbox);
+      }
+    }
+  });
 }
 var $scroller = $('.card-photos .nav-slick').slick({
 slidesToShow: 12,
